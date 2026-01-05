@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 👇 ROOT = PARENT / AGGREGATOR -->
+    <groupId>com.govcaseflow</groupId>
+    <artifactId>gov-case-flow</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Gov Case Flow - Parent</name>
+    <description>Parent project for Gov Case Flow microservices</description>
+
+    <!-- ===================== -->
+    <!-- MODULES (MIKROSERWISY) -->
+    <!-- ===================== -->
+    <modules>
+        <module>case-service</module>
+<!--        <module>user-service</module>-->
+<!--        <module>notification-service</module>-->
+        <!-- później: gateway-service -->
+    </modules>
+
+    <!-- ===================== -->
+    <!-- VERSION MANAGEMENT -->
+    <!-- ===================== -->
+    <properties>
+        <java.version>17</java.version>
+        <spring-boot.version>4.0.1</spring-boot.version>
+        <testcontainers.version>1.19.7</testcontainers.version>
+    </properties>
+
+    <!-- ===================== -->
+    <!-- DEPENDENCY MANAGEMENT -->
+    <!-- ===================== -->
+    <dependencyManagement>
+        <dependencies>
+            <!-- Spring Boot BOM -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Testcontainers BOM -->
+            <dependency>
+                <groupId>org.testcontainers</groupId>
+                <artifactId>testcontainers-bom</artifactId>
+                <version>${testcontainers.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- ===================== -->
+    <!-- PLUGIN MANAGEMENT -->
+    <!-- ===================== -->
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

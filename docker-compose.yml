@@ -1,0 +1,12 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: case-postgres
+    environment:
+      POSTGRES_DB: case_db
+      POSTGRES_USER: case_user
+      POSTGRES_PASSWORD: case_user
+    ports:
+      - "5432:5432"
